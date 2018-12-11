@@ -46,12 +46,12 @@ def get_picture(index: int=1, how_many: int=1, test_db=True):
     img_y = Y_test_orig[0, m:n]
     if test_db:
         if index+how_many > 120:
-            raise Exception("只有120张测试图片")
+            raise Exception("只有120张验证图片")
     else:
         img_x = X_train_orig[m:n]
         img_y = Y_train_orig[0, m:n]
         if index+how_many > 1080:
-            raise Exception("只有1080张测试图片")
+            raise Exception("只有1080张训练图片")
 
     n_x = int(math.sqrt(how_many))
     n_y = how_many // n_x
@@ -78,6 +78,7 @@ if __name__ == '__main__':
     a = math.sqrt(20)
     print(a)
     get_picture(110, 8, False)  # 使用训练集， 第110张图片起共8张图片
+    get_picture(110, 8, True)  # 使用测试集， 第110张图片起共8张图片
 
     x = get_picture(1, 1)
     print(type(x))
