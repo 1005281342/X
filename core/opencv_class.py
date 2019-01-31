@@ -112,7 +112,6 @@ class GestureRecognitionWithOpenCV(object):
                         if area > max_area:
                             max_area = area
                             ci = i
-
                     res = contours[ci]
                     hull = cv2.convexHull(res)
                     drawing = np.zeros(img.shape, np.uint8)
