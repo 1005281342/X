@@ -3,8 +3,8 @@
 """
 here is an example for SIGNS data load and visualize
 
-训练集: 1080张彩色图片（RGB），每张图64×64像素，手势对应数值[0~5]（均匀分布）.
-测试集: 120张彩色图片（RGB），每张图64×64像素，手势对应数值[0~5]（均匀分布）.
+    训练集: 1080张彩色图片（RGB），每张图64×64像素，手势对应数值[0~5]（均匀分布）.
+    测试[验证]集: 120张彩色图片（RGB），每张图64×64像素，手势对应数值[0~5]（均匀分布）.
 """
 import math
 import h5py
@@ -75,8 +75,8 @@ if __name__ == '__main__':
     # print("Y_test_orig", Y_test_orig)
     # print("classes", classes)
     # display some (10 images)
-    a = math.sqrt(20)
-    print(a)
+    # a = math.sqrt(20)
+    # print(a)
     get_picture(110, 8, False)  # 使用训练集， 第110张图片起共8张图片
     get_picture(110, 8, True)  # 使用测试集， 第110张图片起共8张图片
 
@@ -84,7 +84,7 @@ if __name__ == '__main__':
     print(type(x))
     image_raw = scipy.misc.imread('test.png')
     print(type(image_raw))
-    # print(x == image_raw)
+    print(x == image_raw)
 
     # m = 110
     # n = m + 1
