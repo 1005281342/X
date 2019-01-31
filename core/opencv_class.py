@@ -70,11 +70,11 @@ class GestureRecognitionWithOpenCV(object):
         cv2.createTrackbar('trh1', 'trackbar', self.threshold, 100, self.print_threshold)
 
         print("""
-            README
-            B -> 捕获的背景
-            R -> 重置背景
-            N -> 激活触发器
-            T -> 按键测试
+    README
+    B -> 捕获的背景
+    R -> 重置背景
+    N -> 激活触发器
+    T -> 按键测试
         """)
 
         while camera.isOpened():
