@@ -22,3 +22,7 @@
         执行动作
     else:
         将缓存更新为最新的手势
+
+环境安装：
+    
+[HDFView](https://www.hdfgroup.org/downloads/hdfview/?https%3A%2F%2Fwww.hdfgroup.org%2Fdownloads%2Fhdfview%2F)
