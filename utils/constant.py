@@ -13,5 +13,5 @@ Rule = {
 
 
 if __name__ == '__main__':
-
-    print(Rule.get(5))
+    num = 5
+    print(Rule.get(num))
