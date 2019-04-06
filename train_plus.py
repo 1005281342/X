@@ -5,25 +5,26 @@ from keras.layers import MaxPooling2D
 from keras.layers import Flatten
 from keras.layers import Dense
 
-# Step 1 - 建立CNN
-
 # 初始化CNN
 classifier = Sequential()
 
-# 输入层
+# 输入 卷积
 classifier.add(Convolution2D(32, (3, 3), padding="valid", input_shape=(64, 64, 1), activation='relu'))
-classifier.add(MaxPooling2D(pool_size=(2, 2)))
-# Second convolution layer and pooling
-classifier.add(Convolution2D(32, (3, 3), activation='relu'))
-# input_shape is going to be the pooled feature maps from the previous convolution layer
+# 池化
 classifier.add(MaxPooling2D(pool_size=(2, 2)))
 
-# Flattening the layers
+# 卷积
+classifier.add(Convolution2D(32, (3, 3), activation='relu'))
+
+# 池化
+classifier.add(MaxPooling2D(pool_size=(2, 2)))
+
+# 扁平化
 classifier.add(Flatten())
 
-# 添加全连接
+# 全连接
 classifier.add(Dense(units=64, activation='relu'))
-classifier.add(Dense(units=6, activation='softmax'))  # softmax for more than 2
+classifier.add(Dense(units=6, activation='softmax'))
 
 # Compiling the CNN
 classifier.compile(optimizer='adam', loss='categorical_crossentropy',
@@ -32,36 +33,41 @@ classifier.compile(optimizer='adam', loss='categorical_crossentropy',
 # Step 2 - Preparing the train/test data and training the model
 
 # Code copied from - https://keras.io/preprocessing/image/
-from keras.preprocessing.image import ImageDataGenerator
+if __name__ == '__main__':
 
-train_datagen = ImageDataGenerator(
-    rescale=1. / 255,
-    shear_range=0.2,
-    zoom_range=0.2,
-    horizontal_flip=True)
+    from keras.preprocessing.image import ImageDataGenerator
 
-test_datagen = ImageDataGenerator(rescale=1. / 255)
+    # 读取训练集
+    train_datagen = ImageDataGenerator(
+        rescale=1. / 255,
+        shear_range=0.2,
+        zoom_range=0.2,
+        horizontal_flip=True)
 
-training_set = train_datagen.flow_from_directory('data/train',
-                                                 target_size=(64, 64),
-                                                 batch_size=5,
-                                                 color_mode='grayscale',
-                                                 class_mode='categorical')
+    training_set = train_datagen.flow_from_directory('data/train',
+                                                     target_size=(64, 64),
+                                                     batch_size=5,
+                                                     color_mode='grayscale',
+                                                     class_mode='categorical')
 
-test_set = test_datagen.flow_from_directory('data/test',
-                                            target_size=(64, 64),
-                                            batch_size=5,
-                                            color_mode='grayscale',
-                                            class_mode='categorical')
-classifier.fit_generator(
-    training_set,
-    steps_per_epoch=600,  # No of images in training set
-    epochs=6,
-    validation_data=test_set,
-    validation_steps=30)  # No of images in test set
+    # 读取测试集
+    test_datagen = ImageDataGenerator(rescale=1. / 255)
 
-# Saving the model
-model_json = classifier.to_json()
-with open("model-bw.json", "w") as json_file:
-    json_file.write(model_json)
-classifier.save_weights('model-bw.h5')
+    test_set = test_datagen.flow_from_directory('data/test',
+                                                target_size=(64, 64),
+                                                batch_size=5,
+                                                color_mode='grayscale',
+                                                class_mode='categorical')
+    # 拟合
+    classifier.fit_generator(
+        training_set,
+        steps_per_epoch=600,
+        epochs=6,
+        validation_data=test_set,
+        validation_steps=30)
+
+    # 保存模型
+    model_json = classifier.to_json()
+    with open("model-bw.json", "w") as json_file:
+        json_file.write(model_json)
+    classifier.save_weights('model-bw.h5')

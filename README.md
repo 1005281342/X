@@ -23,6 +23,12 @@
     else:
         将缓存更新为最新的手势
 
+一些工具
+
+[Keras 网络可视化](https://jingyan.baidu.com/article/925f8cb8b65feac0dde056f1.html)
+
+[Keras 微软MMDNN](https://blog.csdn.net/qq_38906523/article/details/80319990)
 环境安装：
     
 [HDFView](https://www.hdfgroup.org/downloads/hdfview/?https%3A%2F%2Fwww.hdfgroup.org%2Fdownloads%2Fhdfview%2F)
+

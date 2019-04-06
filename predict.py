@@ -58,7 +58,7 @@ while True:
 
     # Displaying the predictions
     print(prediction[0][0])
-    cv2.putText(frame, prediction[0][0], (10, 120), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 255), 1)
+    cv2.putText(frame, prediction[0][0], (120, 80), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 255), 1)
     cv2.imshow("Frame", frame)
 
     interrupt = cv2.waitKey(10)

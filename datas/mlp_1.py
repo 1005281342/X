@@ -241,7 +241,7 @@ def model_train_MLP(X_train, Y_train, X_test, Y_test,
 
 if __name__ == '__main__':
 
-    # data loading and pre_processing (scale transform)
+    # data_bal_03_24 loading and pre_processing (scale transform)
     X_train_orig, Y_train_orig, X_test_orig, Y_test_orig, classes = load_dataset()
     # Flatten the training and test images
     X_train_flatten = X_train_orig.reshape(X_train_orig.shape[0], -1).T

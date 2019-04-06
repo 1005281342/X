@@ -1,5 +1,6 @@
 import os
 # from time import sleep
+from random import randint
 
 import cv2
 import argparse
@@ -40,7 +41,9 @@ _ = cap.set(3, 240)
 _ = cap.set(4, 320)
 
 status = False
+count_index = 0
 while True:
+    count_index += 1
     _, frame = cap.read()
     # Simulating mirror image
     frame = cv2.flip(frame, 1)
@@ -86,11 +89,6 @@ while True:
 
     cv2.imshow("Frame", frame)
 
-    # _, mask = cv2.threshold(mask, 200, 255, cv2.THRESH_BINARY)
-    # kernel = np.ones((1, 1), np.uint8)
-    # img = cv2.dilate(mask, kernel, iterations=1)
-    # img = cv2.erode(mask, kernel, iterations=1)
-    # do the processing after capturing the image!
     roi = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
     _, roi = cv2.threshold(roi, 120, 255, cv2.THRESH_BINARY)
     cv2.imshow("ROI", roi)
@@ -100,24 +98,11 @@ while True:
     else:
         interrupt = cv2.waitKey(10)
 
-    if interrupt & 0xFF == 27 or str(count[mapping[num_string]]) == '1024':  # esc key
+    if interrupt & 0xFF == 27 or count_index == 1024:  # esc key
         break
 
-    # if not status:
-    #     print("等待10S")
-    #     sleep(10)
-    #     print("开始")
-    #     status = True
-
-    cv2.imwrite(directory + num_string + '/' + str(count[mapping[num_string]]) + '.jpg', roi)
-    # if interrupt & 0xFF == ord('o'):    # this is 'o' ok
-    #     # 开始采集数据
-    #     while True:
-    #         sleep(0.01)
-    #         cv2.imwrite(directory + num_string + '/' + str(count[mapping[num_string]]) + '.jpg', roi)
-    #         if interrupt & 0xFF == 27 or str(count[mapping[num_string]]) == '2000':  # esc key
-    #             break
+    cv2.imwrite(directory + num_string + '/' + str(randint(10, 20))
+                + str(count[mapping[num_string]]) + '.jpg', roi)
 
 cap.release()
 cv2.destroyAllWindows()
-

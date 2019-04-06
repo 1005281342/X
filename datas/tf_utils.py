@@ -26,7 +26,7 @@ def random_mini_batches(X, Y, mini_batch_size=64, seed=0):
     Creates a list of random minibatches from (X, Y)
 
     Arguments:
-    X -- input data, of shape (input size, number of examples)
+    X -- input data_bal_03_24, of shape (input size, number of examples)
     Y -- true "label" vector (containing 0 if cat, 1 if non-cat), of shape (1, number of examples)
     mini_batch_size - size of the mini-batches, integer
     seed -- this is only for the purpose of grading, so that you're "random minibatches are the same as ours.

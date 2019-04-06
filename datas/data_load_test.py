@@ -1,7 +1,7 @@
 # coding = <utf-8>
 
 """
-here is an example for SIGNS data load and visualize
+here is an example for SIGNS data_bal_03_24 load and visualize
 
     训练集: 1080张彩色图片（RGB），每张图64×64像素，手势对应数值[0~5]（均匀分布）.
     测试[验证]集: 120张彩色图片（RGB），每张图64×64像素，手势对应数值[0~5]（均匀分布）.
@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 
 def load_dataset():
     """
-    SIGNS data loading
+    SIGNS data_bal_03_24 loading
 
     @return: train_set_x_orig, train_set_y_orig, test_set_x_orig, test_set_y_orig, classes
     """
@@ -68,7 +68,7 @@ def get_picture(index: int=1, how_many: int=1, test_db=True):
 
 if __name__ == '__main__':
 
-    # load data
+    # load data_bal_03_24
     # print("X_test_orig", X_test_orig)
     # print("Y_train_orig", Y_train_orig)
     # print("X_test_orig", X_test_orig)
