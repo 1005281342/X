@@ -1,3 +1,6 @@
+URL = 'http://192.168.43.85:6660/control'
+DATA = {'num': 1}
+
 Rule = {
     'OPEN_LED': 1,
     'CLOSE_LED': 5,
@@ -11,6 +14,14 @@ Rule = {
     2: 18,
 }
 
+NumMap = {
+    'ZERO': 0,
+    'ONE': 1,
+    'TWO': 2,
+    'THREE': 3,
+    'FOUR': 4,
+    'FIVE': 5
+}
 
 if __name__ == '__main__':
     num = 5
