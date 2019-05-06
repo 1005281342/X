@@ -63,7 +63,7 @@ while True:
     # Displaying the predictions
     print(prediction[0][0])
     tmp.append(NumMap[prediction[0][0]])
-    if len(tmp) > 10:
+    if len(tmp) > 5:
         c = Counter(tmp)
         num = sorted(c.items(), key=lambda x: x[1], reverse=True)[0][0]
         if num > 0:

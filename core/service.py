@@ -14,8 +14,8 @@ class Control(object):
         try:
             GPIO.setmode(GPIO.BCM)  # 设置GPIO模式，BCM模式在所有树莓派通用
             GPIO.setup(num, GPIO.OUT)  # 设置GPIO26为电流输出
-        except:
-            pass
+        except Exception as e:
+            print(e)
 
     def open(self, num):
 
